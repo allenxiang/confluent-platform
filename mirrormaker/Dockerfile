@@ -10,3 +10,11 @@ COPY tools-log4j.properties ${SR_CFGDIR}/
 
 RUN mkdir -p ${MM_CFGDIR} &&\
     chmod +x /usr/local/bin/mirrormaker-docker.sh
+
+
+VOLUME [ "${MM_CFGDIR}" ]
+# Expose JMX
+EXPOSE ${JMX_PORT}
+
+ENTRYPOINT [ "/usr/local/bin/mirrormaker-docker.sh" ]
+
